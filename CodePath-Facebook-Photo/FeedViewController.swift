@@ -36,24 +36,24 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         weddingImage = gestureRecognizer.view as UIImageView!
     }
     
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+         return 0.4
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var destinationViewController = segue.destinationViewController as PhotoViewController
+        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        destinationViewController.transitioningDelegate = self
+    }
+    
     func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
         isPresenting = true
         return self
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-         return 0.4
-    }
-    
     func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
         isPresenting = false
         return self
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var destinationViewController = segue.destinationViewController as UIViewController
-        destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
-        destinationViewController.transitioningDelegate = self
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -67,9 +67,12 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
             var window = UIApplication.sharedApplication().keyWindow
             var frame = window.convertRect(weddingImage.frame, fromView: feedScrollView)
             var copyImageView = UIImageView(frame: frame)
+            
             copyImageView.image = weddingImage.image
             copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
             copyImageView.clipsToBounds = true
+            
+            // Clone the copyImageView UIImage to the new ViewController
             
             window.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
@@ -89,8 +92,8 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
                 }) { (finished:Bool) -> Void in
                     transitionContext.completeTransition(true)
                     copyImageView.removeFromSuperview()
-
-            }
+                }
+            
         } else {
             
             var window = UIApplication.sharedApplication().keyWindow

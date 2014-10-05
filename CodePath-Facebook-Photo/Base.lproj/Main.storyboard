@@ -117,7 +117,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cGt-lJ-VI9">
-                                        <rect key="frame" x="0.0" y="41" width="320" height="482"/>
+                                        <rect key="frame" x="0.0" y="43" width="320" height="482"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -140,6 +140,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="controlsImg" destination="NPK-8E-0PA" id="uWB-5H-uIP"/>
+                        <outlet property="doneBtn" destination="f8X-gs-mPS" id="1F2-Vc-24v"/>
                         <outlet property="imageView" destination="cGt-lJ-VI9" id="PeM-KU-DxX"/>
                         <outlet property="scrollView" destination="pA2-Ju-98r" id="APe-xR-nN8"/>
                     </connections>
