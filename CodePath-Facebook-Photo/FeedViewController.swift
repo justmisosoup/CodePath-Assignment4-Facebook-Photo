@@ -44,6 +44,8 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         var destinationViewController = segue.destinationViewController as PhotoViewController
         destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
         destinationViewController.transitioningDelegate = self
+     // destinationViewController.image = self.weddingImage.image
+
     }
     
     func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
