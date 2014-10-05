@@ -15,6 +15,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
   
     var isPresenting: Bool = true
     var weddingImage: UIImageView!
+    var copyImageView: UIImageView!
     
     override func viewDidLoad() {
         
@@ -94,11 +95,10 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
             
             var window = UIApplication.sharedApplication().keyWindow
             var copyImageView = UIImageView(image: weddingImage.image)
+            var scale = copyImageView.frame.width / 320
+
             copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
             copyImageView.clipsToBounds = true
-            
-            var scale = copyImageView.frame.width / 320
-            
             copyImageView.center = window.center
             copyImageView.transform = CGAffineTransformMakeScale(scale, scale)
             
@@ -114,6 +114,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
                     transitionContext.completeTransition(true)
                     fromViewController.view.removeFromSuperview()
                     copyImageView.removeFromSuperview()
+
             }
 
             
