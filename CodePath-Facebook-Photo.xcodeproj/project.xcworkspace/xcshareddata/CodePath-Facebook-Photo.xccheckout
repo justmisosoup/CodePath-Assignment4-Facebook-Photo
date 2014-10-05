@@ -12,22 +12,34 @@
 	<dict>
 		<key>10AF5AAAAC337A1ADB1379ADE310AABB3BE7BDBC</key>
 		<string>https://github.com/littlemisosoup/CodePath-Group-Assignment.git</string>
+		<key>7974D25C159DDB8535C9C792DDF029CB4C80C814</key>
+		<string>https://github.com/littlemisosoup/CodePath-Assignment4-Facebook-Photo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CodePath-Facebook-Photo/CodePath-Facebook-Photo.xcodeproj</string>
+	<string>CodePath-Facebook-Photo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>10AF5AAAAC337A1ADB1379ADE310AABB3BE7BDBC</key>
-		<string>../../..</string>
+		<string>../../../CodePath-Group-Assignment</string>
+		<key>7974D25C159DDB8535C9C792DDF029CB4C80C814</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/littlemisosoup/CodePath-Group-Assignment.git</string>
+	<string>https://github.com/littlemisosoup/CodePath-Assignment4-Facebook-Photo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>10AF5AAAAC337A1ADB1379ADE310AABB3BE7BDBC</string>
+	<string>7974D25C159DDB8535C9C792DDF029CB4C80C814</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7974D25C159DDB8535C9C792DDF029CB4C80C814</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CodePath-Facebook-Photo</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

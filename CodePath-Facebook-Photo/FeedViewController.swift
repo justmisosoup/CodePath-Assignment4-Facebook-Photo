@@ -114,7 +114,6 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
                     transitionContext.completeTransition(true)
                     fromViewController.view.removeFromSuperview()
                     copyImageView.removeFromSuperview()
-
             }
 
             
