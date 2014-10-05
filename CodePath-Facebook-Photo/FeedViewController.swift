@@ -27,10 +27,11 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         super.didReceiveMemoryWarning()
         
     }
+
     
     @IBAction func tapWedding(gestureRec: UITapGestureRecognizer) {
+        weddingImg = gestureRec.view as UIImageView!
         performSegueWithIdentifier("photoSegue", sender: self)
-        println("GETTING SOMEWHERE \(weddingImg = gestureRec.view as UIImageView!)")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
