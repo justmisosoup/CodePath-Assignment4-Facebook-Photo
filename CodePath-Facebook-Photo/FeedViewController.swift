@@ -23,18 +23,14 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         feedScrollView.contentSize = feedViewImg.image!.size
         
     }
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
     
     @IBAction func tapWedding(gestureRec: UITapGestureRecognizer) {
         performSegueWithIdentifier("photoSegue", sender: self)
-        weddingImg = gestureRec.view as UIImageView!
+        println("GETTING SOMEWHERE \(weddingImg = gestureRec.view as UIImageView!)")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
