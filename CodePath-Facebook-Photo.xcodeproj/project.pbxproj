@@ -87,14 +87,14 @@
 		02A79B5119DCED140014846B /* CodePath-Facebook-Photo */ = {
 			isa = PBXGroup;
 			children = (
+				0260F3A819E08CA600F4E731 /* PhotoViewController.swift */,
+				02E9DAFC19DD05150039F1A2 /* FeedViewController.swift */,
 				02A79B5419DCED140014846B /* AppDelegate.swift */,
 				02A79B5619DCED140014846B /* ViewController.swift */,
 				02A79B5819DCED140014846B /* Main.storyboard */,
-				0260F3A819E08CA600F4E731 /* PhotoViewController.swift */,
 				02E9DB0219DD194A0039F1A2 /* MoreViewController.swift */,
 				02E9DB0019DD193E0039F1A2 /* NotificationsViewController.swift */,
 				02E9DAFE19DD19300039F1A2 /* RequestsViewController.swift */,
-				02E9DAFC19DD05150039F1A2 /* FeedViewController.swift */,
 				02A79B5B19DCED140014846B /* Images.xcassets */,
 				02A79B5D19DCED140014846B /* LaunchScreen.xib */,
 				02A79B5219DCED140014846B /* Supporting Files */,

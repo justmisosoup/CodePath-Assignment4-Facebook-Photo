@@ -19,13 +19,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
+        scrollView.contentSize = CGSizeMake(320, 568)
+        
         imageView.image = image
         imageView.hidden = true
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.center = view.center
         
-        scrollView.delegate = self
-        scrollView.contentSize = CGSizeMake(320, 568)
     }
     
     override func viewDidAppear(animated: Bool) {
