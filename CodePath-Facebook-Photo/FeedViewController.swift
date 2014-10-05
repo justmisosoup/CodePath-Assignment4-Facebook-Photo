@@ -62,37 +62,60 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         
         if (isPresenting) {
+            
             var window = UIApplication.sharedApplication().keyWindow
             var frame = window.convertRect(weddingImage.frame, fromView: feedScrollView)
             var copyImageView = UIImageView(frame: frame)
             copyImageView.image = weddingImage.image
+            copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
+            copyImageView.clipsToBounds = true
             
             window.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
             
             toViewController.view.alpha = 0
-            var scalex = copyImageView.frame.width
-            var scaley = copyImageView.frame.height
             
             window.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
             
             UIView.animateWithDuration(0.4, animations: {
+                copyImageView.frame.size.width = 320
+                copyImageView.frame.size.height = (copyImageView.image!.size.height / copyImageView.image!.size.width) * 320
+                copyImageView.center = window.center
+                
                 toViewController.view.alpha = 1
-                toViewController.view.transform = CGAffineTransformMakeScale(scalex, scaley)
-                copyImageView.center.x = 160
-                copyImageView.center.y = 284
                 
                 }) { (finished:Bool) -> Void in
                     transitionContext.completeTransition(true)
+                    println("dismissing")
+
             }
         } else {
+            
+            var window = UIApplication.sharedApplication().keyWindow
+            var copyImageView = UIImageView(image: weddingImage.image)
+            copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
+            copyImageView.clipsToBounds = true
+            
+            var scale = copyImageView.frame.width / 320
+            
+            copyImageView.center = window.center
+            copyImageView.transform = CGAffineTransformMakeScale(scale, scale)
+            
+            window.addSubview(copyImageView)
+            
+            fromViewController.view.alpha = 0
+            
             UIView.animateWithDuration(0.4, animations: { () -> Void in
-                fromViewController.view.alpha = 0
-            }, completion: { (Bool) -> Void in
-                transitionContext.completeTransition(true)
-                fromViewController.view.removeFromSuperview()
-            })
+                copyImageView.frame.size = CGSize(width: self.weddingImage.frame.width, height: self.weddingImage.frame.height)
+                copyImageView.frame = window.convertRect(self.weddingImage.frame, fromView: self.feedScrollView)
+                
+                }) { (finished: Bool) -> Void in
+                    transitionContext.completeTransition(true)
+                    fromViewController.view.removeFromSuperview()
+                    copyImageView.removeFromSuperview()
+            }
+
             
         }
     }
