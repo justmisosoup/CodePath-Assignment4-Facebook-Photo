@@ -87,7 +87,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
                 
                 }) { (finished:Bool) -> Void in
                     transitionContext.completeTransition(true)
-                    println("dismissing")
+                    copyImageView.removeFromSuperview()
 
             }
         } else {
