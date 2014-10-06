@@ -30,11 +30,17 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
 
     
     @IBAction func tapWedding(gestureRec: UITapGestureRecognizer) {
+        
+        // Pass the weddingImg through the gestureRec into the new view as a UIImageView! Yes, order does matter.
+        
         weddingImg = gestureRec.view as UIImageView!
         performSegueWithIdentifier("photoSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        // When preparing for the segue, make sure you define the destinationViewController as PhotoViewController. Set up the custom modal presentation style as well as transition delegation and of course calling the weddingImg that you already passed through the gestureRec into the destination View Controller.
+        
         var destinationViewController = segue.destinationViewController as PhotoViewController
         destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
         destinationViewController.transitioningDelegate = self
@@ -73,9 +79,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
             copyImageView.image = weddingImg.image
             copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
             copyImageView.clipsToBounds = true
-            
-            // Clone the copyImageView UIImage to the new ViewController
-            
+                        
             window.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
             

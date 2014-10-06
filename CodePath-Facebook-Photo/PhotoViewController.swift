@@ -16,9 +16,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var controlsImg: UIImageView!
     
     var image: UIImage!
+    var offset: CGFloat!
+    var scale: CGFloat!
+    var origin: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        doneBtn.alpha = 1
+        controlsImg.alpha = 1
         
         scrollView.delegate = self
         scrollView.contentSize = CGSizeMake(320, 568)
@@ -28,8 +34,44 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.center = view.center
         
+        view.backgroundColor = UIColor (white: 0.0, alpha: 0.0)
+        
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        offset = scrollView.contentOffset.y
+        scrollView.backgroundColor = UIColor(white: 0, alpha: ((100-abs(offset))/100))
+    }
+
+    func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
+        origin = imageView.frame.origin
+        
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.doneBtn.alpha = 0
+            self.controlsImg.alpha = 0
+        })
+    
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView!,
+        willDecelerate decelerate: Bool) {
+            if (abs(offset) > 100) {
+                dismissViewControllerAnimated(true, completion: nil)
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.doneBtn.alpha = 1
+                    self.controlsImg.alpha = 1
+                })
+            }
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.doneBtn.alpha = 1
+            self.controlsImg.alpha = 1
+        })
+    }
+
+
     override func viewDidAppear(animated: Bool) {
         imageView.hidden = false
     }
