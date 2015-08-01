@@ -33,7 +33,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // Pass the weddingImg through the gestureRec into the new view as a UIImageView! Yes, order does matter.
         
-        weddingImg = gestureRec.view as UIImageView!
+        weddingImg = gestureRec.view as! UIImageView!
         performSegueWithIdentifier("photoSegue", sender: self)
     }
     
@@ -41,7 +41,7 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         // When preparing for the segue, make sure you define the destinationViewController as PhotoViewController. Set up the custom modal presentation style as well as transition delegation and of course calling the weddingImg that you already passed through the gestureRec into the destination View Controller.
         
-        var destinationViewController = segue.destinationViewController as PhotoViewController
+        var destinationViewController = segue.destinationViewController as! PhotoViewController
         destinationViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
         destinationViewController.transitioningDelegate = self
         destinationViewController.image = self.weddingImg.image
@@ -73,25 +73,25 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
         if (isPresenting) {
             
             var window = UIApplication.sharedApplication().keyWindow
-            var frame = window.convertRect(weddingImg.frame, fromView: feedScrollView)
+            var frame = window!.convertRect(weddingImg.frame, fromView: feedScrollView)
             var copyImageView = UIImageView(frame: frame)
             
             copyImageView.image = weddingImg.image
             copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
             copyImageView.clipsToBounds = true
                         
-            window.addSubview(copyImageView)
+            window!.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
             
             toViewController.view.alpha = 0
             
-            window.addSubview(copyImageView)
+            window!.addSubview(copyImageView)
             containerView.addSubview(toViewController.view)
             
             UIView.animateWithDuration(0.4, animations: {
                 copyImageView.frame.size.width = 320
                 copyImageView.frame.size.height = (copyImageView.image!.size.height / copyImageView.image!.size.width) * 320
-                copyImageView.center = window.center
+                copyImageView.center = window!.center
                 
                 toViewController.view.alpha = 1
                 
@@ -108,16 +108,16 @@ class FeedViewController: UIViewController, UIViewControllerTransitioningDelegat
 
             copyImageView.contentMode = UIViewContentMode.ScaleAspectFill
             copyImageView.clipsToBounds = true
-            copyImageView.center = window.center
+            copyImageView.center = window!.center
             copyImageView.transform = CGAffineTransformMakeScale(scale, scale)
             
-            window.addSubview(copyImageView)
+            window!.addSubview(copyImageView)
             
             fromViewController.view.alpha = 0
             
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 copyImageView.frame.size = CGSize(width: self.weddingImg.frame.width, height: self.weddingImg.frame.height)
-                copyImageView.frame = window.convertRect(self.weddingImg.frame, fromView: self.feedScrollView)
+                copyImageView.frame = window!.convertRect(self.weddingImg.frame, fromView: self.feedScrollView)
                 
                 }) { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
